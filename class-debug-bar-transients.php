@@ -64,6 +64,8 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'print_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'print_scripts' ) );
+
+		load_plugin_textdomain( 'ds-debug-bar-transients', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	}
 
 	/**
@@ -106,7 +108,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		global $_wp_using_ext_object_cache;
 
 		if ( $_wp_using_ext_object_cache ) {
-			echo '<p class="invalid">' . __( 'You are using an unsupported external object cache.' ) . '</p>';
+			echo '<p class="invalid">' . __( 'You are using an unsupported external object cache.', 'ds-debug-bar-transients' ) . '</p>';
 			return;
 		}
 
@@ -114,7 +116,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 
 		printf(
 			'<h2><span>%s</span>%s</h2>',
-			__( 'Total Transients:' ),
+			__( 'Total Transients:', 'ds-debug-bar-transients' ),
 			number_format( $this->_total_transients )
 		);
 
