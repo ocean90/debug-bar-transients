@@ -1,7 +1,7 @@
 === Debug Bar Transients ===
 Contributors: ocean90
 Tags: debug bar, transients, debug
-Requires at least: 3.3.1
+Requires at least: 3.3
 Tested up to: 3.4-alpha
 Stable tag: 0.1
 
@@ -33,6 +33,11 @@ Try also some of my [other plugins](http://profiles.wordpress.org/users/ocean90)
 == Screenshots ==
 
 1. How it will look.
+
+== Frequently Asked Questions ==
+
+= What are WordPress Transients? =
+The Transients API is very similar to the Options API but with the added feature of an expiration time, which simplifies the process of using the wp_options database table to store cached information. [Continue reading](http://codex.wordpress.org/Transients_API).
 
 == Installation ==
 
