@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Debug Bar Transients
- * Version: 0.1
+ * Version: 0.2
  * Description: Adds information about the WordPress Transient API to Debug Bar.
  * Author: Dominik Schilling
  * Author URI: http://wphelper.de/
@@ -70,4 +70,4 @@ function ds_ajax_delete_transient() {
 
 	die( $ret );
 }
-add_action('wp_ajax_ds_delete_transient', 'ds_ajax_delete_transient');
+add_action( 'wp_ajax_ds_delete_transient', 'ds_ajax_delete_transient' );

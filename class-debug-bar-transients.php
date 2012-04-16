@@ -90,7 +90,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			'ds-debug-bar-transients',
 			plugins_url( "js/debug-bar-transients$suffix.js", __FILE__ ),
 			array( 'jquery' ),
-			'10042012'
+			'16042012'
 		);
 	}
 
@@ -233,7 +233,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		);
 
 		array_walk( $transients, array( $this, '_format_transient' ) );
-		unset($transients);
+		unset( $transients );
 
 		return $this->_transients;
 	}
@@ -261,17 +261,18 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 
 		global $wpdb;
 
-		if ( is_multisite() )
+		if ( is_multisite() ) {
 			$transients = $wpdb->get_results(
 				"SELECT meta_key AS name, meta_value AS value FROM $wpdb->sitemeta WHERE meta_key LIKE '_site_transient_%' AND site_id = $wpdb->siteid"
 			);
-		else
+		} else {
 			$transients = $wpdb->get_results(
 				"SELECT option_name AS name, option_value AS value FROM $wpdb->options WHERE option_name LIKE '_site_transient_%'"
 			);
+		}
 
 		array_walk( $transients, array( $this, '_format_site_transient' ) );
-		unset($transients);
+		unset( $transients );
 
 		return $this->_site_transients;
 	}
@@ -281,7 +282,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	 *
 	 * @param  object $value One transient value from the database.
 	 */
-	private function _format_site_transient( $value, $key ) {
+	private function _format_site_transient( $value ) {
 		if ( false === strpos( $value->name, '_site_transient_timeout_' ) )
 			$this->_site_transients[ str_replace( '_site_transient_', '', $value->name ) ]['value'] = $value->value;
 		else
@@ -298,7 +299,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		if ( empty( $transients ) )
 			return;
 
-		wp_nonce_field( 'ds-delete-transient' );
+		wp_nonce_field( 'ds-delete-transient', '_ds-delete-transient-nonce' );
 
 		echo '<table cellspacing="0">';
 		echo '<thead>';
@@ -307,7 +308,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		echo '<th class="transient-timeout">' . __( 'Expiration', 'ds-debug-bar-transients' ) . '</th>';
 		echo '</thead>';
 
-		$class = ' class="alternate"';
+
 		$action_links = sprintf(
 			'<div class="row-actions"><span><a class="delete" data-transient-type="%s" data-transient-name="$" title="%s" href="#">%s</a> | <span class="switch-value"><a title="%s" href="#">%s</a></span></div></td>',
 			( $site_transient ? 'site' : '' ),
@@ -317,6 +318,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			__( 'Switch value view', 'ds-debug-bar-transients' )
 		);
 
+		$class = ' class="alternate"';
 		foreach( $transients as $transient => $data ) {
 			echo '<tr' . $class . '>';
 			echo '<td>' . $transient . str_replace( '$', $transient, $action_links ) . '</td>';

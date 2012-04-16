@@ -1,4 +1,4 @@
 (function(a){a(document).ready(function(){a("#debug-menu-target-DS_Debug_Bar_Transients pre").click(function(){a(this).toggleClass("open");});a("#debug-menu-target-DS_Debug_Bar_Transients .switch-value a").click(function(b){a(this).parents("td").next("td").toggleClass("un");
-b.preventDefault();});a("#debug-menu-target-DS_Debug_Bar_Transients a.delete").click(function(b){t=a(this);data={action:"ds_delete_transient","transient-type":t.data("transient-type"),"transient-name":t.data("transient-name"),_ajax_nonce:a("#debug-menu-target-DS_Debug_Bar_Transients #_wpnonce").val()};
-a.post(ajaxurl,data,function(c){if(c=="1"){console.debug(t.parents("tr"));t.parents("tr").css("backgroundColor","#faa").fadeOut(350,function(){a(this).remove();
-});}else{}});b.preventDefault();});});})(jQuery);
+b.preventDefault();});a("#debug-menu-target-DS_Debug_Bar_Transients a.delete").click(function(c){var d=a(this);var b={action:"ds_delete_transient","transient-type":d.data("transient-type"),"transient-name":d.data("transient-name"),_ajax_nonce:a("#debug-menu-target-DS_Debug_Bar_Transients #_ds-delete-transient-nonce").val()};
+a.post(ajaxurl,b,function(e){if(e=="1"){d.parents("tr").css("backgroundColor","#faa").fadeOut(350,function(){a(this).remove();});}});c.preventDefault();
+});});})(jQuery);

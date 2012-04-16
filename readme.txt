@@ -61,5 +61,9 @@ To upload the plugin through WordPress, instead of FTP:
 1. Upload the downloaded zip file on the 'Add New' plugins screen (see the 'Upload' tab) in your WordPress admin area and activate.
 
 == Changelog ==
+= 0.2.0 =
+* Removed debug cruft
+* Some clean up
+
 = 0.1.0 =
 * First release.
