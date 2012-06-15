@@ -1,13 +1,15 @@
 ( function( $ ) {
 	$( document ).ready( function() {
+		// Expand the pre
 		$( '#debug-menu-target-DS_Debug_Bar_Transients pre' ).click( function() {
 			$(this).toggleClass( 'open' );
-		})
+		});
 
+		// Switch between serialized and unserialized data
 		$( '#debug-menu-target-DS_Debug_Bar_Transients .switch-value a' ).click( function( e ) {
 			$( this ).parents( 'td' ).next( 'td' ).toggleClass( 'un' );
 			e.preventDefault();
-		})
+		});
 
 		$( '#debug-menu-target-DS_Debug_Bar_Transients a.delete' ).click( function( e ) {
 			var _this = $( this );

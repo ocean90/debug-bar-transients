@@ -42,11 +42,13 @@
 	padding: 0;
 	margin: 0;
 	font: 10px/1.5 Monaco, "Courier New", Courier, Fixed, monospace;
-	max-height: 150px;
-	overflow: scroll;
+	min-height: 100px;
+	max-height: 200px;
+	overflow-y: scroll;
 	cursor: pointer;
 	background: none;
 	border: none;
+	white-space: pre-wrap;
 }
 
 #debug-menu-target-DS_Debug_Bar_Transients .row-actions {

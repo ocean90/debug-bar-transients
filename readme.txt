@@ -61,6 +61,11 @@ To upload the plugin through WordPress, instead of FTP:
 1. Upload the downloaded zip file on the 'Add New' plugins screen (see the 'Upload' tab) in your WordPress admin area and activate.
 
 == Changelog ==
+= 0.3.0 =
+* Fixed a missing pre close tag
+* Fixed the height and width for the values in Opera and Firefox
+* New: Number of invalid transients beside the total transients number
+
 = 0.2.0 =
 * Removed debug cruft
 * Some clean up

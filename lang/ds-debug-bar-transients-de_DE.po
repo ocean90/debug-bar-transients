@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Debug Bar Transients v0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2012-06-15 19:18:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,112 +19,112 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: class-debug-bar-transients.php:60
+#: class-debug-bar-transients.php:67
 #@ ds-debug-bar-transients
 msgid "Transients"
 msgstr "Transients"
 
-#: class-debug-bar-transients.php:111
+#: class-debug-bar-transients.php:118
 #@ ds-debug-bar-transients
 msgid "You are using an unsupported external object cache."
 msgstr "Du verwendest einen nicht unterstützten externen Cache."
 
-#: class-debug-bar-transients.php:119
+#: class-debug-bar-transients.php:126
 #@ ds-debug-bar-transients
 msgid "Total Transients:"
 msgstr "Gesamte Transients:"
 
-#: class-debug-bar-transients.php:123
+#: class-debug-bar-transients.php:136
 #@ ds-debug-bar-transients
 msgid "Custom Transients"
 msgstr "Benutzerdefinierte Transients"
 
-#: class-debug-bar-transients.php:125
-#: class-debug-bar-transients.php:131
-#: class-debug-bar-transients.php:137
-#: class-debug-bar-transients.php:143
+#: class-debug-bar-transients.php:138
+#: class-debug-bar-transients.php:144
+#: class-debug-bar-transients.php:150
+#: class-debug-bar-transients.php:156
 #@ ds-debug-bar-transients
 msgid "No transients found."
 msgstr "Keine Transients gefunden."
 
-#: class-debug-bar-transients.php:129
+#: class-debug-bar-transients.php:142
 #@ ds-debug-bar-transients
 msgid "Custom Site Transients"
 msgstr "Benutzerdefinierte globale Transients"
 
-#: class-debug-bar-transients.php:135
+#: class-debug-bar-transients.php:148
 #@ ds-debug-bar-transients
 msgid "Core Transients"
 msgstr "Core Transients"
 
-#: class-debug-bar-transients.php:141
+#: class-debug-bar-transients.php:154
 #@ ds-debug-bar-transients
 msgid "Core Site Transients"
 msgstr "Globale Core Transients"
 
-#: class-debug-bar-transients.php:305
+#: class-debug-bar-transients.php:327
 #@ ds-debug-bar-transients
 msgid "Name"
 msgstr "Name"
 
-#: class-debug-bar-transients.php:306
+#: class-debug-bar-transients.php:328
 #@ ds-debug-bar-transients
 msgid "Value"
 msgstr "Wert"
 
-#: class-debug-bar-transients.php:307
+#: class-debug-bar-transients.php:329
 #@ ds-debug-bar-transients
 msgid "Expiration"
 msgstr "Ablauf"
 
-#: class-debug-bar-transients.php:314
+#: class-debug-bar-transients.php:336
 #@ ds-debug-bar-transients
 msgid "Delete this transient (No undo!)"
 msgstr "Lösche diesen Transient (Keine Wiederherstellung möglich!)"
 
-#: class-debug-bar-transients.php:315
+#: class-debug-bar-transients.php:337
 #@ ds-debug-bar-transients
 msgid "Delete"
 msgstr "Löschen"
 
-#: class-debug-bar-transients.php:316
+#: class-debug-bar-transients.php:338
 #@ ds-debug-bar-transients
 msgid "Switch between serialized and unserialized view"
 msgstr "Zwischen der serialisierten und unserialisierten Ausgabe wechseln"
 
-#: class-debug-bar-transients.php:317
+#: class-debug-bar-transients.php:339
 #@ ds-debug-bar-transients
 msgid "Switch value view"
 msgstr "Ansicht ändern"
 
-#: class-debug-bar-transients.php:323
+#: class-debug-bar-transients.php:346
 #@ default
 msgid "Click to expand"
 msgstr ""
 
-#: class-debug-bar-transients.php:341
+#: class-debug-bar-transients.php:364
 #@ ds-debug-bar-transients
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: class-debug-bar-transients.php:348
+#: class-debug-bar-transients.php:371
 #, php-format
 #@ ds-debug-bar-transients
 msgid "Unix-Timestamp: %d"
 msgstr "Unix-Zeitstempel: %d"
 
-#: class-debug-bar-transients.php:352
+#: class-debug-bar-transients.php:375
 #@ default
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: class-debug-bar-transients.php:357
+#: class-debug-bar-transients.php:380
 #, php-format
 #@ ds-debug-bar-transients
 msgid "(in %s)"
 msgstr "(in %s)"
 
-#: class-debug-bar-transients.php:362
+#: class-debug-bar-transients.php:385
 #, php-format
 #@ ds-debug-bar-transients
 msgid "(invalid since %s)"
@@ -160,9 +160,14 @@ msgstr "Dominik Schilling"
 msgid "http://wphelper.de/"
 msgstr "http://wphelper.de/"
 
+#: class-debug-bar-transients.php:132
+#@ ds-debug-bar-transients
+msgid "Invalid Transients:"
+msgstr "Ungültige Transients:"
+
 #. translators: plugin header field 'Version'
 #: debug-bar-transients.php:0
 #@ ds-debug-bar-transients
-msgid "0.1"
-msgstr "0.1"
+msgid "0.3.0"
+msgstr "0.3.0-DE"
 

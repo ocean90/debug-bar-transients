@@ -54,6 +54,13 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	private $_total_transients = 0;
 
 	/**
+	 * Total number of transients
+	 *
+	 * @var int
+	 */
+	private $_invalid_transients = 0;
+
+	/**
 	 * Give the panel a title and set the enqueues.
 	 */
 	public function init() {
@@ -118,6 +125,12 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			'<h2><span>%s</span>%s</h2>',
 			__( 'Total Transients:', 'ds-debug-bar-transients' ),
 			number_format( $this->_total_transients )
+		);
+
+		printf(
+			'<h2><span>%s</span>%s</h2>',
+			__( 'Invalid Transients:', 'ds-debug-bar-transients' ),
+			number_format( $this->_invalid_transients )
 		);
 
 		echo '<h3 id="custom-transients">' . __( 'Custom Transients', 'ds-debug-bar-transients' ) . '</h3>';
@@ -246,8 +259,12 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	private function _format_transient( $value ) {
 		if ( false === strpos( $value->name, '_transient_timeout_' ) )
 			$this->_transients[ str_replace( '_transient_', '', $value->name ) ]['value'] = $value->value;
-		else
+		else {
 			$this->_transients[ str_replace( '_transient_timeout_', '', $value->name ) ]['timeout'] = $value->value;
+
+			if ( $value->value < time() )
+				$this->_invalid_transients++;
+		}
 	}
 
 	/**
@@ -285,8 +302,12 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	private function _format_site_transient( $value ) {
 		if ( false === strpos( $value->name, '_site_transient_timeout_' ) )
 			$this->_site_transients[ str_replace( '_site_transient_', '', $value->name ) ]['value'] = $value->value;
-		else
+		else {
 			$this->_site_transients[ str_replace( '_site_transient_timeout_', '', $value->name ) ]['timeout'] = $value->value;
+
+			if ( $value->value < time() )
+				$this->_invalid_transients++;
+		}
 	}
 
 	/**
@@ -322,7 +343,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		foreach( $transients as $transient => $data ) {
 			echo '<tr' . $class . '>';
 			echo '<td>' . $transient . str_replace( '$', $transient, $action_links ) . '</td>';
-			echo '<td><pre class="serialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</td>';
+			echo '<td><pre class="serialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</pre></td>';
 			echo '<td>' . $this->_print_timeout( $data )  . '</td>';
 			echo '</tr>';
 
