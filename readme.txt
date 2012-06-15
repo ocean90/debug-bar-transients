@@ -3,7 +3,7 @@ Contributors: ocean90
 Tags: debug bar, transients, debug
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 0.2
+Stable tag: 0.3
 
 Debug Bar Transients adds a new panel to Debug Bar that displays information about WordPress transients.
 

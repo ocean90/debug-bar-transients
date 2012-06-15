@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Debug Bar Transients
- * Version: 0.3.0
+ * Version: 0.3
  * Description: Adds information about the WordPress Transient API to Debug Bar.
  * Author: Dominik Schilling
  * Author URI: http://wphelper.de/
