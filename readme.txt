@@ -1,9 +1,12 @@
 === Debug Bar Transients ===
 Contributors: ocean90
 Tags: debug bar, transients, debug
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VR8YU922B7K46
 Requires at least: 3.3
-Tested up to: 3.4
+Tested up to: 3.5
 Stable tag: 0.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Debug Bar Transients adds a new panel to Debug Bar that displays information about WordPress transients.
 
@@ -25,7 +28,7 @@ Once installed, you will have access to the following information:
 *This plugin is inspired by the [Debug Bar Cron](http://wordpress.org/extend/plugins/debug-bar-cron/) plugin.*
 
 = Feedback = 
-If you want, you can drop me a line @[ocean90](http://twitter.com/ocean90) on Twitter or @[Dominik Schilling](https://plus.google.com/u/0/101675293278434581718/) on Google+.
+If you want, you can drop me a line @[ocean90](http://twitter.com/ocean90) on Twitter or @[Dominik Schilling](https://plus.google.com/101675293278434581718/) on Google+.
 
 = More =
 Try also some of my [other plugins](http://profiles.wordpress.org/users/ocean90) or visit my site [wpGrafie.de](http://wpgrafie.de/).
