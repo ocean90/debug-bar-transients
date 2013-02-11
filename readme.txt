@@ -27,7 +27,7 @@ Once installed, you will have access to the following information:
 
 *This plugin is inspired by the [Debug Bar Cron](http://wordpress.org/extend/plugins/debug-bar-cron/) plugin.*
 
-= Feedback = 
+= Feedback =
 If you want, you can drop me a line @[ocean90](http://twitter.com/ocean90) on Twitter or @[Dominik Schilling](https://plus.google.com/101675293278434581718/) on Google+.
 
 = More =
