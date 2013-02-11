@@ -36,7 +36,7 @@ Try also some of my [other plugins](http://profiles.wordpress.org/users/ocean90)
 ## Screenshots  
   
 *How it will look.*
-![How it will look.](https://raw.github.com/ocean90/debug-bar-transients/master/assets/screenshot-1.png)
+![How it will look.](https://raw.github.com/ocean90/debug-bar-transients/master/assets-wp-repo/screenshot-1.png)
 
   
 ## Frequently Asked Questions  
