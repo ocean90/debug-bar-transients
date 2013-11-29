@@ -162,8 +162,6 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			number_format( $this->_invalid_transients )
 		);
 
-		echo '<br style="clear: both;" />';
-
 		printf(
 			'<h2><a href="#core-transients"><span>%s:</span>%s</a></h2>',
 			__( 'Core Transients', 'ds-debug-bar-transients' ),
