@@ -101,7 +101,18 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		add_action( 'wp_enqueue_scripts', array( $this, 'print_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'print_scripts' ) );
 
-		load_plugin_textdomain( 'ds-debug-bar-transients', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+	}
+
+	/**
+	 * Load the textdomain.
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain(
+			'ds-debug-bar-transients',
+			false,
+			dirname( plugin_basename( __FILE__ ) ) . '/lang/'
+		);
 	}
 
 	/**
@@ -220,25 +231,10 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	private function get_total_transients() {
 		$this->get_transients();
 
-		$core_transients = array(
-			'random_seed',
-			'wporg_theme_feature_list',
-			'settings_errors',
-			'doing_cron',
-			'plugin_slugs',
-			'mailserver_last_checked',
-			'dirsize_cache',
-			'dash_',
-			'rss_',
-			'feed_',
-			'feed_mod_',
-			'plugins_delete_result_'
-		);
-
 		foreach ( $this->_transients as $transient => $data ) {
 			$this->_total_transients++;
 
-			if ( $this->_wildcard_search( $transient, $core_transients ) ) {
+			if ( $this->_wildcard_search( $transient, $this->get_core_transient_names() ) ) {
 				$this->_total_core_transients++;
 				$this->_core_transients[ $transient ] = $data;
 			}
@@ -250,21 +246,10 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 
 		$this->get_site_transients();
 
-		$core_site_transients = array(
-			'update_core',
-			'update_plugins',
-			'update_themes',
-			'wporg_theme_feature_list',
-			'browser_',
-			'poptags_',
-			'wordpress_credits_',
-			'theme_roots'
-		);
-
 		foreach ( $this->_site_transients as $transient => $data ) {
 			$this->_total_transients++;
 
-			if ( $this->_wildcard_search( $transient, $core_site_transients ) ) {
+			if ( $this->_wildcard_search( $transient, $this->get_core_site_transient_names() ) ) {
 				$this->_total_core_site_transients++;
 				$this->_core_site_transients[ $transient ] = $data;
 			}
@@ -404,13 +389,16 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		);
 
 		foreach( $transients as $transient => $data ) {
-			echo '<tr>';
-			echo '<td>' . $transient . '<div class="row-actions">' . str_replace( '$', $transient, $delete_link ) . ( isset( $data['value'] ) ? ' | ' . $switch_link : '' ) . '</div></td>';
-			if( isset( $data['value'] ) ) {
-				echo '<td><pre class="serialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</pre></td>';
+			if ( ! isset( $data['value'] ) ) {
+				echo '<tr>';
+			} else {
+				echo '<tr class="transient-error">';
 			}
-			else {
-				echo '<td><p class="transient-error">' . esc_html( __( 'Invalid transient - transient name was truncated, most likely coming from Developer plugin...', 'ds-debug-bar-transients' ) ) . '</p></td>';
+			echo '<td>' . $transient . '<div class="row-actions">' . str_replace( '$', $transient, $delete_link ) . ( isset( $data['value'] ) ? ' | ' . $switch_link : '' ) . '</div></td>';
+			if ( ! isset( $data['value'] ) ) {
+				echo '<td><pre class="serialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</pre></td>';
+			} else {
+				echo '<td><p>' . __( 'Invalid transient - the transient name was probably truncated. Limit is 64 characters.', 'ds-debug-bar-transients' ) . '</p></td>';
 			}
 			echo '<td>' . $this->_print_timeout( $data )  . '</td>';
 			echo '</tr>';
@@ -451,6 +439,44 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 					'<span class="invalid">' . __( '(invalid since %s)', 'ds-debug-bar-transients'  ) . '</span>',
 					human_time_diff( $time )
 				)
+		);
+	}
+
+	/**
+	 * Returns the transient names which are used by core.
+	 */
+	private function get_core_transient_names() {
+		return array(
+			'random_seed',
+			'wporg_theme_feature_list',
+			'settings_errors',
+			'doing_cron',
+			'plugin_slugs',
+			'mailserver_last_checked',
+			'dirsize_cache',
+			'dash_',
+			'rss_',
+			'feed_',
+			'feed_mod_',
+			'plugins_delete_result_',
+			'is_multi_author'
+		);
+	}
+
+	/**
+	 * Returns the site transient names which are used by core.
+	 */
+	private function get_core_site_transient_names() {
+		return array(
+			'update_core',
+			'update_plugins',
+			'update_themes',
+			'wporg_theme_feature_list',
+			'browser_',
+			'poptags_',
+			'wordpress_credits_',
+			'theme_roots',
+			'popular_importers_'
 		);
 	}
 }
