@@ -26,7 +26,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	private $_core_transients = array();
 
 	/**
-	 * Holds only the cron site transients..
+	 * Holds only the core site transients..
 	 *
 	 * @var array
 	 */
@@ -54,11 +54,40 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	private $_total_transients = 0;
 
 	/**
-	 * Total number of transients
+	 * Total number of invalid transients
 	 *
 	 * @var int
 	 */
 	private $_invalid_transients = 0;
+
+	/**
+	 * Total number of core transients.
+	 *
+	 * @var array
+	 */
+	private $_total_core_transients = 0;
+
+	/**
+	 * Total number of core site transients..
+	 *
+	 * @var array
+	 */
+	private $_total_core_site_transients = 0;
+
+	/**
+	 * Total number of transients created by plugins or themes.
+	 *
+	 * @var array
+	 */
+	private $_total_user_transients = 0;
+
+	/**
+	 * Total number of site transients created by plugins or themes.
+	 *
+	 * @var array
+	 */
+	private $_total_user_site_transients = 0;
+
 
 	/**
 	 * Give the panel a title and set the enqueues.
@@ -133,6 +162,31 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			number_format( $this->_invalid_transients )
 		);
 
+		echo '<br style="clear: both;" />';
+
+		printf(
+			'<h2><a href="#core-transients"><span>%s:</span>%s</a></h2>',
+			__( 'Core Transients', 'ds-debug-bar-transients' ),
+			number_format( $this->_total_core_transients )
+		);
+		printf(
+			'<h2><a href="#core-site-transients"><span>%s:</span>%s</a></h2>',
+			__( 'Core Site Transients', 'ds-debug-bar-transients' ),
+			number_format( $this->_total_core_site_transients )
+		);
+		printf(
+			'<h2><a href="#custom-transients"><span>%s:</span>%s</a></h2>',
+			__( 'Custom Transients', 'ds-debug-bar-transients' ),
+			number_format( $this->_total_user_transients )
+		);
+		printf(
+			'<h2><a href="#custom-site-transients"><span>%s:</span>%s</a></h2>',
+			__( 'Custom Site Transients', 'ds-debug-bar-transients' ),
+			number_format( $this->_total_user_site_transients )
+		);
+
+		wp_nonce_field( 'ds-delete-transient', '_ds-delete-transient-nonce' );
+
 		echo '<h3 id="custom-transients">' . __( 'Custom Transients', 'ds-debug-bar-transients' ) . '</h3>';
 		if ( empty( $this->_user_transients ) )
 			echo __( 'No transients found.', 'ds-debug-bar-transients' );
@@ -184,10 +238,14 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		foreach ( $this->_transients as $transient => $data ) {
 			$this->_total_transients++;
 
-			if ( $this->_wildcard_search( $transient, $core_transients ) )
+			if ( $this->_wildcard_search( $transient, $core_transients ) ) {
+				$this->_total_core_transients++;
 				$this->_core_transients[ $transient ] = $data;
-			else
+			}
+			else {
+				$this->_total_user_transients++;
 				$this->_user_transients[ $transient ] = $data;
+			}
 		}
 
 		$this->get_site_transients();
@@ -206,10 +264,14 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		foreach ( $this->_site_transients as $transient => $data ) {
 			$this->_total_transients++;
 
-			if ( $this->_wildcard_search( $transient, $core_site_transients )  )
+			if ( $this->_wildcard_search( $transient, $core_site_transients ) ) {
+				$this->_total_core_site_transients++;
 				$this->_core_site_transients[ $transient ] = $data;
-			else
+			}
+			else {
+				$this->_total_user_transients++;
 				$this->_user_site_transients[ $transient ] = $data;
+			}
 		}
 
 		return $this->_total_transients;
@@ -320,34 +382,38 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 		if ( empty( $transients ) )
 			return;
 
-		wp_nonce_field( 'ds-delete-transient', '_ds-delete-transient-nonce' );
-
 		echo '<table cellspacing="0">';
-		echo '<thead>';
+		echo '<thead><tr>';
 		echo '<th class="transient-name">' . __( 'Name', 'ds-debug-bar-transients' ) . '</th>';
 		echo '<th class="transient-value">' . __( 'Value', 'ds-debug-bar-transients' ) . '</th>';
 		echo '<th class="transient-timeout">' . __( 'Expiration', 'ds-debug-bar-transients' ) . '</th>';
-		echo '</thead>';
+		echo '</tr></thead>';
 
 
-		$action_links = sprintf(
-			'<div class="row-actions"><span><a class="delete" data-transient-type="%s" data-transient-name="$" title="%s" href="#">%s</a> | <span class="switch-value"><a title="%s" href="#">%s</a></span></div></td>',
+		$delete_link = sprintf(
+			'<span><a class="delete" data-transient-type="%s" data-transient-name="$" title="%s" href="#">%s</a></span>',
 			( $site_transient ? 'site' : '' ),
 			__( 'Delete this transient (No undo!)', 'ds-debug-bar-transients' ),
-			__( 'Delete', 'ds-debug-bar-transients'),
+			__( 'Delete', 'ds-debug-bar-transients')
+		);
+		
+		$switch_link = sprintf(
+			'<span class="switch-value"><a title="%s" href="#">%s</a></span>',
 			__( 'Switch between serialized and unserialized view', 'ds-debug-bar-transients' ),
 			__( 'Switch value view', 'ds-debug-bar-transients' )
 		);
 
-		$class = ' class="alternate"';
 		foreach( $transients as $transient => $data ) {
-			echo '<tr' . $class . '>';
-			echo '<td>' . $transient . str_replace( '$', $transient, $action_links ) . '</td>';
-			echo '<td><pre class="serialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</pre></td>';
+			echo '<tr>';
+			echo '<td>' . $transient . '<div class="row-actions">' . str_replace( '$', $transient, $delete_link ) . ( isset( $data['value'] ) ? ' | ' . $switch_link : '' ) . '</div></td>';
+			if( isset( $data['value'] ) ) {
+				echo '<td><pre class="serialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</pre></td>';
+			}
+			else {
+				echo '<td><p class="transient-error">' . esc_html( __( 'Invalid transient - transient name was truncated, most likely coming from Developer plugin...', 'ds-debug-bar-transients' ) ) . '</p></td>';
+			}
 			echo '<td>' . $this->_print_timeout( $data )  . '</td>';
 			echo '</tr>';
-
-			$class = ( ' class="alternate"' == $class ) ? '' : ' class="alternate"';
 		}
 
 		echo '</table>';
