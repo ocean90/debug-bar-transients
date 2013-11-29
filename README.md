@@ -3,8 +3,8 @@
 **Tags:** debug bar, transients, debug  
 **Donate link:** <https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VR8YU922B7K46>  
 **Requires at least:** 3.3  
-**Tested up to:** 3.5  
-**Stable tag:** 0.3  
+**Tested up to:** 3.8  
+**Stable tag:** 0.4  
 **License:** GPLv2 or later  
 **License URI:** <http://www.gnu.org/licenses/gpl-2.0.html>  
   
@@ -67,12 +67,13 @@ To upload the plugin through WordPress, instead of FTP:
   
 ## Changelog  
 
-#### Trunk 
+#### 0.4.0-beta 
 * Enhancement: Totals per transient type at the top of the page - props [Jrf](http://profiles.wordpress.org/jrf)
 * Bug fix: duplicate nonce - props [Jrf](http://profiles.wordpress.org/jrf)
 * Bug fix: show some useful information about invalid transients and prevent PHP notice - props [Jrf](http://profiles.wordpress.org/jrf)
 * Bug fix: HTML validation errors - props [Jrf](http://profiles.wordpress.org/jrf)
 * i18n: Dutch translation - props [Jrf](http://profiles.wordpress.org/jrf)
+* Enhancement: Updated core transient names
 
 #### 0.3.0  
 * Fixed a missing pre close tag  

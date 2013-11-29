@@ -396,7 +396,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			}
 			echo '<td>' . $transient . '<div class="row-actions">' . str_replace( '$', $transient, $delete_link ) . ( isset( $data['value'] ) ? ' | ' . $switch_link : '' ) . '</div></td>';
 			if ( ! isset( $data['value'] ) ) {
-				echo '<td><pre class="serialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</pre></td>';
+				echo '<td><pre class="serialized" title="' .  __( 'Click to expand', 'ds-debug-bar-transients' ) . '">' . esc_html( $data['value'] ) . '</pre><pre class="unserialized" title="' .  __( 'Click to expand' ) . '">' . esc_html( print_r( maybe_unserialize( $data['value'] ), true ) ) . '</pre></td>';
 			} else {
 				echo '<td><p>' . __( 'Invalid transient - the transient name was probably truncated. Limit is 64 characters.', 'ds-debug-bar-transients' ) . '</p></td>';
 			}
