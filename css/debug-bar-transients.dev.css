@@ -29,7 +29,7 @@
 #debug-menu-target-DS_Debug_Bar_Transients th {
 	background: #dfdfdf;
 }
-#debug-menu-target-DS_Debug_Bar_Transients tr.alternate {
+#debug-menu-target-DS_Debug_Bar_Transients tr:nth-child(2n+1) {
 	background: #fcfcfc;
 }
 
@@ -79,4 +79,12 @@
 #debug-menu-target-DS_Debug_Bar_Transients a.delete,
 #debug-menu-target-DS_Debug_Bar_Transients .invalid {
 	color: #bc0b0b !important;
+}
+
+#debug-menu-target-DS_Debug_Bar_Transients p.transient-error {
+	background-color: #ffcccc !important;
+	font-style: italic;
+	font-weight:bold;
+	font-size: 90%;
+	margin: 0;
 }

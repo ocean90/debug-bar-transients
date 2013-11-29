@@ -1,4 +1,4 @@
-# Debug Bar Transients  
+# Debug Bar Transients
 **Contributors:** ocean90  
 **Tags:** debug bar, transients, debug  
 **Donate link:** <https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VR8YU922B7K46>  
@@ -66,6 +66,14 @@ To upload the plugin through WordPress, instead of FTP:
 1. Upload the downloaded zip file on the 'Add New' plugins screen (see the 'Upload' tab) in your WordPress admin area and activate.  
   
 ## Changelog  
+
+#### Trunk 
+* Enhancement: Totals per transient type at the top of the page - props [Jrf](http://profiles.wordpress.org/jrf)
+* Bug fix: duplicate nonce - props [Jrf](http://profiles.wordpress.org/jrf)
+* Bug fix: show some useful information about invalid transients and prevent PHP notice - props [Jrf](http://profiles.wordpress.org/jrf)
+* Bug fix: HTML validation errors - props [Jrf](http://profiles.wordpress.org/jrf)
+* i18n: Dutch translation - props [Jrf](http://profiles.wordpress.org/jrf)
+
 #### 0.3.0  
 * Fixed a missing pre close tag  
 * Fixed the height and width for the values in Opera and Firefox  
