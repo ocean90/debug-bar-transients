@@ -63,28 +63,28 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	/**
 	 * Total number of core transients.
 	 *
-	 * @var array
+	 * @var int
 	 */
 	private $_total_core_transients = 0;
 
 	/**
 	 * Total number of core site transients..
 	 *
-	 * @var array
+	 * @var int
 	 */
 	private $_total_core_site_transients = 0;
 
 	/**
 	 * Total number of transients created by plugins or themes.
 	 *
-	 * @var array
+	 * @var int
 	 */
 	private $_total_user_transients = 0;
 
 	/**
 	 * Total number of site transients created by plugins or themes.
 	 *
-	 * @var array
+	 * @var int
 	 */
 	private $_total_user_site_transients = 0;
 
@@ -396,7 +396,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			__( 'Delete this transient (No undo!)', 'ds-debug-bar-transients' ),
 			__( 'Delete', 'ds-debug-bar-transients')
 		);
-		
+
 		$switch_link = sprintf(
 			'<span class="switch-value"><a title="%s" href="#">%s</a></span>',
 			__( 'Switch between serialized and unserialized view', 'ds-debug-bar-transients' ),
