@@ -108,7 +108,8 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	 * Enqueue styles.
 	 */
 	public function print_styles() {
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.dev' : '';
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 		wp_enqueue_style(
 			'ds-debug-bar-transients',
 			plugins_url( "css/debug-bar-transients$suffix.css", __FILE__ ),
@@ -121,7 +122,8 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	 * Enqueue scripts.
 	 */
 	public function print_scripts() {
-		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.dev' : '';
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 		wp_enqueue_script(
 			'ds-debug-bar-transients',
 			plugins_url( "js/debug-bar-transients$suffix.js", __FILE__ ),
