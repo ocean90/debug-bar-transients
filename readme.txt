@@ -3,7 +3,7 @@ Contributors: ocean90
 Tags: debug bar, transients, debug
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VR8YU922B7K46
 Requires at least: 3.3
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: 0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -65,7 +65,7 @@ To upload the plugin through WordPress, instead of FTP:
 
 == Changelog ==
 
-= 0.4.0-beta =
+= 0.4.0 =
 * Enhancement: Totals per transient type at the top of the page - props [Jrf](http://profiles.wordpress.org/jrf)
 * Bug fix: duplicate nonce - props [Jrf](http://profiles.wordpress.org/jrf)
 * Bug fix: show some useful information about invalid transients and prevent PHP notice - props [Jrf](http://profiles.wordpress.org/jrf)
