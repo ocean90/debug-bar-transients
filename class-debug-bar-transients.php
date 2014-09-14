@@ -415,7 +415,7 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 	 */
 	private function _print_timeout( $data ) {
 		if ( empty( $data['timeout'] ) )
-			return __( 'Unknown', 'ds-debug-bar-transients' );
+			return __( 'Never', 'ds-debug-bar-transients' );
 		else
 			$time = $data['timeout'];
 
