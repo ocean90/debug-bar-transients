@@ -459,7 +459,8 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			'feed_',
 			'feed_mod_',
 			'plugins_delete_result_',
-			'is_multi_author'
+			'is_multi_author',
+			'wp_generating_att_',
 		);
 	}
 
@@ -476,7 +477,8 @@ class DS_Debug_Bar_Transients extends Debug_Bar_Panel {
 			'poptags_',
 			'wordpress_credits_',
 			'theme_roots',
-			'popular_importers_'
+			'popular_importers_',
+			'available_translations',
 		);
 	}
 }
