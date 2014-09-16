@@ -3,7 +3,7 @@ Contributors: ocean90
 Tags: debug bar, transients, debug
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VR8YU922B7K46
 Requires at least: 3.3
-Tested up to: 3.8.1
+Tested up to: 4.0
 Stable tag: 0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -64,6 +64,9 @@ To upload the plugin through WordPress, instead of FTP:
 1. Upload the downloaded zip file on the 'Add New' plugins screen (see the 'Upload' tab) in your WordPress admin area and activate.
 
 == Changelog ==
+
+= Trunk =
+* Enhancement: Updated core transient names (up to WP 4.0)
 
 = 0.4.0 =
 * Enhancement: Totals per transient type at the top of the page - props [Jrf](http://profiles.wordpress.org/jrf)
